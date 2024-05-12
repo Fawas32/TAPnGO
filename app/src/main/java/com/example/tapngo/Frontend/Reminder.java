@@ -1,7 +1,6 @@
 package com.example.tapngo.Frontend;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,13 +10,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.tapngo.R;
 
-public class MainActivity extends LoaderPage {
-
+public class Reminder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_reminder);
 
     }
 }
