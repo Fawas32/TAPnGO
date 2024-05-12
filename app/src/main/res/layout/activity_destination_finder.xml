@@ -65,7 +65,7 @@
                     android:layout_marginTop="25dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="TO"
+                    android:hint="To"
                     android:textColorHint="@color/black"
                     android:paddingStart="10dp"
                     android:paddingEnd="6dp">
