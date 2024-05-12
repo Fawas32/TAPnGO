@@ -82,7 +82,7 @@ public class MainActivity extends LoaderPage {
 
         @Override
         protected void onPostExecute(String response) {
-            if (stationDataList != null) { // Add null check here
+            if (stationDataList != null) {
                 Log.d("listSize", stationDataList.size() + "");
 
                 for (StationData model : stationDataList) {
