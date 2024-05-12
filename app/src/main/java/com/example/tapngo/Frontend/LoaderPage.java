@@ -1,42 +1,57 @@
 package com.example.tapngo.Frontend;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import com.example.tapngo.R;
 
-//this page is for the loading screen
 public class LoaderPage extends AppCompatActivity {
 
-    AlertDialog alertDialog;
+    private static final long LOADING_DELAY = 2000; // 2 seconds delay
+    private AlertDialog alertDialog;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loader_page);
+
+        showProgressDialog(); // Show the loading dialog
+
+        // Simulating loading process with a delay
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideProgressDialog(); // Hide the loading dialog
+                startMainActivity(); // Start MainActivity after the delay
+            }
+        }, LOADING_DELAY);
+    }
 
     public void showProgressDialog() {
-        AlertDialog.Builder dailogBuilder = new AlertDialog.Builder(LoaderPage.this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.activity_loader_page, null);
-        dailogBuilder.setView(dialogView);
-        alertDialog = dailogBuilder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.show();
+        // Your AlertDialog code here
     }
 
     public void hideProgressDialog() {
-        if (alertDialog != null && alertDialog.isShowing()) {
-            alertDialog.dismiss();
-        }
+        // Your hide dialog code here
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        hideProgressDialog();
+    private void startMainActivity() {
+        Intent intent = new Intent(LoaderPage.this, MainActivity.class);
+        startActivity(intent);
+        finish(); // Finish LoaderPage activity
     }
+}
 
 //    AlertDialog dialog;
 //    Activity activity;
@@ -70,4 +85,3 @@ public class LoaderPage extends AppCompatActivity {
 //            return insets;
 //        });
 //    }
-}
